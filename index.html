@@ -58,9 +58,9 @@ p{max-width:64ch}
 .tb-socials a{opacity:.72;transition:.3s}.tb-socials a:hover{opacity:1}
 .tb-socials svg{width:15px;height:15px;fill:currentColor;display:block}
 .nav-top{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:72px;gap:1rem}
-.nav-top .brand{justify-self:center}
-.nav-top .menu-btn{justify-self:start}
-.nav-top .nav-inquire{justify-self:end}
+.nav-top .brand{justify-self:center;grid-column:2}
+.nav-top .menu-btn{justify-self:start;grid-column:1}
+.nav-top .nav-inquire{justify-self:end;grid-column:3}
 .subnav{display:flex;justify-content:center;align-items:center;height:46px;border-top:1px solid var(--line)}
 .subnav .navlinks{gap:clamp(1rem,2vw,2.3rem)}
 .menu-btn{display:none;align-items:center;color:currentColor}
@@ -383,7 +383,7 @@ const NAV=[["home","Home"],["amenities","Amenities"],["accommodations","Accommod
 </script>
 <script>
 const GUESTS=[
- {name:"Ms. Rochelle",tag:"Renter",photo:"rv-rochelle.jpg",text:"Hi po! Haven’t gotten the chance magfeedback agad kasi super pahinga po talaga kami pag uwi. We really enjoyed our stay at Casita de Balasin! Sobrang relaxing ng place, exactly what we needed for our long weekend getaway. Special mention po sa caretakers. They were really nice, accommodating, and helpful throughout our stay. Ang gaan kausap and they made sure na comfortable kami. Super appreciated po talaga! Thank you po for making our stay comfortable and peaceful. We definitely enjoyed our time there and would love to come back again. Please extend our thanks po kila Ate and Kuya. Good job to them po."},
+ {name:"Ms. Rochelle",photo:"rv-rochelle.jpg",text:"Hi po! Haven’t gotten the chance magfeedback agad kasi super pahinga po talaga kami pag uwi. We really enjoyed our stay at Casita de Balasin! Sobrang relaxing ng place, exactly what we needed for our long weekend getaway. Special mention po sa caretakers. They were really nice, accommodating, and helpful throughout our stay. Ang gaan kausap and they made sure na comfortable kami. Super appreciated po talaga! Thank you po for making our stay comfortable and peaceful. We definitely enjoyed our time there and would love to come back again. Please extend our thanks po kila Ate and Kuya. Good job to them po."},
  {name:"Mr. Lee",text:"Casita de Balasin is a great place, so relaxing po and every member of our family really likes it. Have a huge place to have activities."},
  {name:"Ms. Christine",text:"We had such an amazing stay at this private villa! Super clean and well-maintained yung place, and ang ganda talaga in person, mas maganda pa kaysa sa pictures. The ambiance is very relaxing and perfect for family gatherings or intimate celebrations. Complete yung amenities, especially the pool area, sobrang na-enjoy namin! The rooms are comfortable, and you can really feel the privacy and security of the place. Madali din kausap yung owner, very accommodating and responsive sa mga questions namin before and during our stay. Overall, super worth it yung stay and we would definitely book again. Highly recommended for anyone looking for a peaceful and quality private getaway!"},
  {name:"Mr. Chino",photo:"rv-chino.jpg",text:"Sir/Mam thank you so much for the place. Feedback lang po. Sobrang ganda ng place. Even mga guests nagustuhan and nagandahan sila. Mabait mga caretakers and very responsive si sir and mabait! Looking forward til next time!"},
@@ -487,8 +487,7 @@ function pageHome(){return `
 
  <section class="section" style="padding-top:0"><div class="wrap">
    <div class="intro"><span class="eyebrow">Reviews</span></div>
-   ${(function(){const fq=GUESTS.find(g=>g.name==='Mrs. Aquino')||GUESTS[0];return `<div class="rquote reveal">${starsRow(5)}<div class="q">${fq.text}</div><div class="rby">${fq.name}</div></div>`;})()}
-   <div class="review-grid" style="border-top:0;padding-top:0;margin-top:clamp(2.6rem,5vw,4rem)">${['Mr. Lee','Ms. Rozel','Mr. Trinidad'].map(n=>GUESTS.find(g=>g.name===n)).filter(Boolean).map(reviewCard).join('')}</div>
+   <div class="review-grid" style="border-top:0;padding-top:0;margin-top:0">${['Mr. Lee','Ms. Rozel','Mr. Trinidad'].map(n=>GUESTS.find(g=>g.name===n)).filter(Boolean).map(reviewCard).join('')}</div>
    <div class="center" style="margin-top:2.4rem"><a class="textlink" href="#reviews" data-nav="reviews">More reviews</a></div>
  </div></section>
 
@@ -509,7 +508,7 @@ function pageAmenities(){
    ${group('Entertainment',AM.rec)}
    ${group('Bath',AM.bath)}
    ${group('Arrival',AM.arrival)}
-   <p class="small-note" style="text-align:center;margin-top:2.5rem">A one hectare private lot at the back offers additional parking.</p>
+   <p class="small-note" style="text-align:center;max-width:60ch;margin:2.2rem auto 0">A one hectare private lot at the back offers additional parking.</p>
    <div class="grouplabel"><span class="eyebrow">Also Provided</span><div class="rule"></div></div>
    <div class="chips">${['Basic kitchen & cooking utensils','Water filtration system','55\" Smart TVs w/ Netflix','High-speed WiFi','Refrigerator & microwave oven','Rice cooker & electric kettle','Cooktop 2-burner (PHP 300 gas charge)','Water dispenser (free 2 gallons purified water)','Speaker & microphone','Screen projector','Backup generator','Well-lit grounds'].map(t=>`<span class="chip">${t}</span>`).join('')}</div>
  </div></section>
